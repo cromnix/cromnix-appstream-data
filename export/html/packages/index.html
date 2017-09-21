@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AppStream Report for Cromnix - Data for the packages suite</title>
+
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/static/img/favicon.png">
+
+    
+<script language="javascript" type="text/javascript" src="/static/js/jquery/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.pie.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.resize.js"></script>
+
+<style>
+.graph-container {
+    position: relative;
+    height: 380px;
+}
+
+.graph-placeholder {
+    height: 90%;
+    font-size: 14px;
+    margin-top: -20px;
+}
+</style>
+</head>
+
+<body>
+<div class="headbar">
+  <div class="headbar-content avoidwrap">
+    
+<span style="font-size:18px;"><a href="../" style="color: #000000;">⇦ |</a></span>
+<span>AppStream data for Cromnix/packages</span>
+  </div>
+  <div class="headbar-content-right avoidwrap">
+    
+<small>Last updated on: 2017-09-21 10:57 [-04]</small>
+  </div>
+</div>
+
+<div class="content">
+  
+    <h1>Select an archive section</h1>
+
+    <h2>Sections</h2>
+      <h3><a href="main/index.html">main</a></h3>
+      <h3><a href="lfs/index.html">lfs</a></h3>
+      <h3><a href="multilib/index.html">multilib</a></h3>
+      <h3><a href="runit/index.html">runit</a></h3>
+      <h3><a href="s6/index.html">s6</a></h3>
+
+    <h2>Health of suite "packages"</h2>
+
+    <div class="wrapper">
+      <div class="graph-container">
+          <div align="center" class="float-left" style="height: 100%; float: left; width: 33.333%;">
+            <center><strong>main</strong></center>
+            <div id="placeholder_main" class="graph-placeholder" style="float:left; width:100%;"></div>
+          </div>
+          <div align="center" class="float-left" style="height: 100%; float: left; width: 33.333%;">
+            <center><strong>lfs</strong></center>
+            <div id="placeholder_lfs" class="graph-placeholder" style="float:left; width:100%;"></div>
+          </div>
+          <div align="center" class="float-left" style="height: 100%; float: left; width: 33.333%;">
+            <center><strong>multilib</strong></center>
+            <div id="placeholder_multilib" class="graph-placeholder" style="float:left; width:100%;"></div>
+          </div>
+          <div align="center" class="float-left" style="height: 100%; float: left; width: 33.333%;">
+            <center><strong>runit</strong></center>
+            <div id="placeholder_runit" class="graph-placeholder" style="float:left; width:100%;"></div>
+          </div>
+          <div align="center" class="float-left" style="height: 100%; float: left; width: 33.333%;">
+            <center><strong>s6</strong></center>
+            <div id="placeholder_s6" class="graph-placeholder" style="float:left; width:100%;"></div>
+          </div>
+      </div>
+    </div>
+
+    <script>
+      $.getJSON("/statistics.json", function(data) {
+        var sections = [];
+          sections.push("main");
+          sections.push("lfs");
+          sections.push("multilib");
+          sections.push("runit");
+          sections.push("s6");
+
+        for (var i = 0; i < sections.length; i++) {
+          var sdata = data["packages"];
+          var sectionName = sections[i];
+          var secData = sdata[sectionName];
+
+          var resData = [
+              {
+                label: "Errors",
+                data: [ 1, secData["errors"][secData["errors"].length-1][1] ],
+                color: "#c05020"
+              },
+              {
+                label: "Warnings",
+                data: [ 1, secData["warnings"][secData["warnings"].length-1][1] ],
+                color: "#ffcc66"
+              },
+              {
+                label: "Infos",
+                data: [ 1, secData["infos"][secData["infos"].length-1][1] ],
+                color: "#6060c0"
+              },
+              {
+                label: "Valid Data",
+                data: [ 1, secData["metadata"][secData["metadata"].length-1][1] ],
+                color: "#30a420"
+              }
+          ];
+
+          drawSummaryChart(resData, sectionName);
+        }
+      });
+    </script>
+    <script>
+      function labelFormatter(label, series) {
+          return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + Math.round(series.percent) + "%</div>";
+      }
+
+      function drawSummaryChart(data, section) {
+        $.plot('#placeholder_' + section, data, {
+            series: {
+                pie: {
+                    innerRadius: 0.34,
+                    show: true,
+
+                    label: {
+                        show: true,
+                        radius: 3/5,
+                        formatter: labelFormatter,
+                        background: {
+                            opacity: 0.6,
+                            color: '#000'
+                        }
+                    }
+                }
+            },
+
+            grid: {
+                hoverable: true,
+                clickable: true,
+                margin: 0,
+                borderWidth: 0
+            },
+
+            legend: { show: false }
+        });
+      }
+    </script>
+</div>
+
+<hr />
+
+<footer>
+<p style="font-size:0.8em;">
+    Generated by <a href="https://github.com/ximion/appstream-generator">appstream-generator</a> (v0.6.5).
+</p>
+
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AppStream Report for Cromnix - Issues for mate-control-center in packages/main</title>
+
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/static/img/favicon.png">
+
+    
+
+</head>
+
+<body>
+<div class="headbar">
+  <div class="headbar-content avoidwrap">
+    
+<span style="font-size:18px;"><a href="index.html" style="color: #000000;">⇦ |</a></span>
+
+<span>mate-control-center</span> <span style="font-size:16px;">[main]</span>
+  </div>
+  <div class="headbar-content-right avoidwrap">
+    
+<small>Last updated on: 2017-09-21 10:57 [-04]</small>
+  </div>
+</div>
+
+<div class="content">
+  
+    <h1>Hints for mate-control-center in main</h1>
+
+    <div class="wrapper">
+
+
+
+    <h2>
+      mate-default-applications-properties.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+      <div class="infobox infobox-error">
+        <h2>Errors</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>icon-not-found</strong><br/>
+            The icon 'preferences-desktop-default-applications' was not found in the archive. This issue can have multiple reasons:
+<ul>
+  <li>The icon is not present in the archive.</li>
+  <li>The icon is in a wrong directory.</li>
+  <li>The icon is not available in a suitable size (at least 64x64px)</li>
+  <li>On Debian and Ubuntu, the icon is a symlink. The generator cannot read symlinks on these distributions - make the icon a real file.</li>
+</ul>
+To make the icon easier to find, place it in <code>/usr/share/icons/hicolor/&lt;size&gt;/apps</code> and ensure the <code>Icon=</code> value
+of the .desktop file is set correctly.
+
+            </li>
+        </ul>
+      </div>
+
+
+
+
+    
+    <h2>
+      mate-appearance-properties.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-about-me.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-window-properties.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+      <div class="infobox infobox-error">
+        <h2>Errors</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>icon-not-found</strong><br/>
+            The icon 'preferences-system-windows' was not found in the archive. This issue can have multiple reasons:
+<ul>
+  <li>The icon is not present in the archive.</li>
+  <li>The icon is in a wrong directory.</li>
+  <li>The icon is not available in a suitable size (at least 64x64px)</li>
+  <li>On Debian and Ubuntu, the icon is a symlink. The generator cannot read symlinks on these distributions - make the icon a real file.</li>
+</ul>
+To make the icon easier to find, place it in <code>/usr/share/icons/hicolor/&lt;size&gt;/apps</code> and ensure the <code>Icon=</code> value
+of the .desktop file is set correctly.
+
+            </li>
+        </ul>
+      </div>
+
+
+
+
+    
+    <h2>
+      matecc.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+      <div class="infobox infobox-error">
+        <h2>Errors</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>icon-not-found</strong><br/>
+            The icon 'preferences-desktop' was not found in the archive. This issue can have multiple reasons:
+<ul>
+  <li>The icon is not present in the archive.</li>
+  <li>The icon is in a wrong directory.</li>
+  <li>The icon is not available in a suitable size (at least 64x64px)</li>
+  <li>On Debian and Ubuntu, the icon is a symlink. The generator cannot read symlinks on these distributions - make the icon a real file.</li>
+</ul>
+To make the icon easier to find, place it in <code>/usr/share/icons/hicolor/&lt;size&gt;/apps</code> and ensure the <code>Icon=</code> value
+of the .desktop file is set correctly.
+
+            </li>
+        </ul>
+      </div>
+
+
+
+
+    
+    <h2>
+      mate-settings-mouse.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-keybinding.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-network-properties.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-at-properties.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-display-properties.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-font-viewer.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    <h2>
+      mate-keyboard.desktop        <span style="font-size:12px;" class="label label-neutral">⚙ x86_64</span>
+    </h2>
+
+
+
+
+      <div class="infobox infobox-hint">
+        <h2>Hints</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+            <strong>description-from-package</strong><br/>
+            This component gets its description from the package it is located in.<br/>
+This has several disadvantages, like poor markup, too technical descriptions for users of software centers, different components having the same description, etc.<br/>
+Please consider writing a metainfo file for this component to take the long description upstream. In future, components without metainfo file might be dropped from the metadata entirely.
+You can consult the <a href="http://freedesktop.org/software/appstream/docs/chap-Quickstart.html">XML quickstart guides</a> for more information on how to write a metainfo file.
+
+            </li>
+        </ul>
+      </div>
+
+    
+    </div>
+</div>
+
+<hr />
+
+<footer>
+<p style="font-size:0.8em;">
+    Generated by <a href="https://github.com/ximion/appstream-generator">appstream-generator</a> (v0.6.5).
+</p>
+
+
+</footer>
+
+</body>
+</html>

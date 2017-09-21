@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AppStream Report for Cromnix - Data for packages/main</title>
+
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/static/img/favicon.png">
+
+    
+<script language="javascript" type="text/javascript" src="/static/js/jquery/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.time.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.resize.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/flot/jquery.flot.fillbetween.js"></script>
+
+<style>
+.graph-container {
+    position: relative;
+    height: 280px;
+    width: 80%;
+}
+
+.graph-placeholder {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+</style>
+</head>
+
+<body>
+<div class="headbar">
+  <div class="headbar-content avoidwrap">
+    
+<span style="font-size:18px;"><a href="../" style="color: #000000;">⇦ |</a></span>
+<span>AppStream data for Cromnix/packages/main</span>
+  </div>
+  <div class="headbar-content-right avoidwrap">
+    
+<small>Last updated on: 2017-09-21 10:57 [-04]</small>
+  </div>
+</div>
+
+<div class="content">
+  
+    <h1>Overview for packages/main</h1>
+
+    <h2>Data</h2>
+
+    <h3><a href="issues/index.html">Issues</a> - Issues found while extracting the data</h3>
+
+    <h3><a href="metainfo/index.html">Metainfo</a> - Per-package view of the generated data</h3>
+
+
+    <h2>Health</h2>
+    <div class="wrapper">
+
+      <h3>Issue overview</h3>
+      <div style="width: 80%;">
+
+        <div class="progress" style="margin-left: 20px;">
+          <div style="width: 10.4651%" class="progress-bar progress-bar-green">
+            <span class="sr-only">10.4651% Valid</span>
+          </div>
+          <div style="width: 9.76744%" class="progress-bar progress-bar-blue">
+            <span class="sr-only">9.76744% Infos</span>
+          </div>
+          <div style="width: 73.7209%" class="progress-bar progress-bar-yellow">
+            <span class="sr-only">73.7209% Warnings</span>
+          </div>
+          <div style="width: 6.04651%" class="progress-bar progress-bar-red">
+            <span class="sr-only">6.04651% Errors</span>
+          </div>
+        </div>
+
+        <div class="graph-container" style="width: 100%;">
+          <div id="placeholder" class="graph-placeholder" style="float:left; width:90%;"></div>
+          <div id="choices" style="float:right;"></div>
+        </div>
+
+      </div>
+
+      <ul>
+        <li>45 valid components</li>
+        <li>26 errors</li>
+        <li>317 warnings</li>
+        <li>42 infos/hints</li>
+      </ul>
+
+    </div>
+
+    <script type="text/javascript">
+      function dataUseJSTime(data) {
+          return data.map(function(v) {
+              return [v[0] * 1000, v[1]];
+          });
+      }
+
+      $.getJSON("/statistics.json", function(allData) {
+        data = allData["packages"]["main"];
+
+        var datasets = {
+            "errors": {
+                color: "#c05020",
+                data: dataUseJSTime(data["errors"]),
+                label: "Errors",
+                id: "errors"
+            },
+            "warnings": {
+                color: "#ffcc66",
+                data: dataUseJSTime(data["warnings"]),
+                label: "Warnings"
+            },
+            "infos": {
+                color: "#6060c0",
+                data: dataUseJSTime(data["infos"]),
+                label: "Infos"
+            },
+            "valid": {
+                color: "#30a420",
+                data: dataUseJSTime(data["metadata"]),
+                label: "Valid data"
+            }
+        };
+
+        // insert checkboxes
+        var choiceContainer = $("#choices");
+        $.each(datasets, function(key, val) {
+            choiceContainer.append("<br/><input type='checkbox' name='" + key +
+                "' checked='checked' id='id" + key + "'></input>" +
+                "<label for='id" + key + "'>" + val.label + "</label>");
+        });
+
+        choiceContainer.find("input").click(plotAccordingToChoices);
+
+        function plotAccordingToChoices() {
+            var data = [];
+
+            choiceContainer.find("input:checked").each(function () {
+                var key = $(this).attr("name");
+                if (key && datasets[key]) {
+                    data.push(datasets[key]);
+                }
+            });
+
+            if (data.length > 0) {
+                $.plot("#placeholder", data, {
+                    series: {
+                        lines: {
+                            show: true,
+                            fill: 0.1
+                        },
+                        fillBetween: "errors"
+                    },
+
+                    yaxis: {
+                        min: 0
+                    },
+
+                    xaxis: {
+                        mode: "time",
+                        timeformat: "%y/%m/%d"
+                    },
+
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    }
+                });
+
+            };
+        }
+
+        plotAccordingToChoices();
+      });
+    </script>
+</div>
+
+<hr />
+
+<footer>
+<p style="font-size:0.8em;">
+    Generated by <a href="https://github.com/ximion/appstream-generator">appstream-generator</a> (v0.6.5).
+</p>
+
+
+</footer>
+
+</body>
+</html>
