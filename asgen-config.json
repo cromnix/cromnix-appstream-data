@@ -1,0 +1,17 @@
+{
+	"ProjectName": "Cromnix",
+	"ArchiveRoot": "./",
+	"Backend": "cromnix",
+	"Features":
+	{
+		"validateMetainfo": true
+	},
+	"Suites":
+	{
+		"packages":
+		{
+			"sections": ["main", "lfs", "multilib", "runit", "s6"],
+			"architectures": ["x86_64"]
+		}
+	}
+}
